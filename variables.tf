@@ -36,12 +36,6 @@ variable "github_ssh_domain" {
   default     = "github.com"
 }
 
-variable "github_ssh_known_hosts_file" {
-  type        = string
-  default     = "/tmp/github_known_hosts"
-  description = "Path to a temporary file used to store GitHub's known hosts during the deployment"
-}
-
 variable "github_owner" {
   type        = string
   description = "GitHub owner"

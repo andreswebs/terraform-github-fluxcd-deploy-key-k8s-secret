@@ -34,7 +34,9 @@ provider "kubernetes" {
 }
 
 module "fluxcd_deploy_key" {
-  source              = "github.com/andreswebs/terraform-github-fluxcd-deploy-key-k8s-secret"
+  source  = "andreswebs/fluxcd-deploy-key-k8s-secret/github"
+  version = "1.0.0"
+
   k8s_namespace       = "flux-system"
   git_repository_name = var.flux_repository_name
   git_branch          = var.flux_git_branch
@@ -70,7 +72,6 @@ The key files must be named `identity` (private key) and `identity.pub` (public 
 | <a name="input_github_deploy_key_title"></a> [github\_deploy\_key\_title](#input\_github\_deploy\_key\_title) | GitHub deploy key title | `string` | `"flux"` | no |
 | <a name="input_github_owner"></a> [github\_owner](#input\_github\_owner) | GitHub owner | `string` | n/a | yes |
 | <a name="input_github_ssh_domain"></a> [github\_ssh\_domain](#input\_github\_ssh\_domain) | Domain to use for SSH to GitHub | `string` | `"github.com"` | no |
-| <a name="input_github_ssh_known_hosts_file"></a> [github\_ssh\_known\_hosts\_file](#input\_github\_ssh\_known\_hosts\_file) | Path to a temporary file used to store GitHub's known hosts during the deployment | `string` | `"/tmp/github_known_hosts"` | no |
 | <a name="input_k8s_namespace"></a> [k8s\_namespace](#input\_k8s\_namespace) | Name of the Kubernetes namespace where the resources will be deployed | `string` | `"flux-system"` | no |
 | <a name="input_k8s_namespace_annotations"></a> [k8s\_namespace\_annotations](#input\_k8s\_namespace\_annotations) | Annotations to apply to the Kubernetes namespace when it is created | `map(string)` | `{}` | no |
 | <a name="input_k8s_namespace_labels"></a> [k8s\_namespace\_labels](#input\_k8s\_namespace\_labels) | Labels to apply to the Kubernetes namespace when it is created | `map(string)` | `{}` | no |

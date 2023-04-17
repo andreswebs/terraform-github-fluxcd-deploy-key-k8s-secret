@@ -9,7 +9,9 @@ provider "kubernetes" {
 }
 
 module "fluxcd_deploy_key" {
-  source              = "github.com/andreswebs/terraform-github-fluxcd-deploy-key-k8s-secret"
+  source  = "andreswebs/fluxcd-deploy-key-k8s-secret/github"
+  version = "1.0.0"
+
   k8s_namespace       = "flux-system"
   git_repository_name = var.flux_repository_name
   git_branch          = var.flux_git_branch
