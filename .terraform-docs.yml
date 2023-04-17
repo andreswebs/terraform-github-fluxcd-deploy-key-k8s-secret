@@ -1,0 +1,46 @@
+formatter: markdown
+
+content: |-
+    {{ .Header }}
+
+    ## Usage
+
+    Example:
+
+    ```hcl
+    {{ include "examples/main.tf" }}
+    ```
+
+    To use an externally generated deploy key, first add the deploy public key to the GitHub repository (see [instructions](https://docs.github.com/en/developers/overview/managing-deploy-keys#setup-2)).
+    Then create a Kubernetes secret with the contents below:
+
+    ```sh
+    {{ include "examples/create-secret.txt" }}
+    ```
+
+    The key files must be named `identity` (private key) and `identity.pub` (public key).
+
+    {{ .Footer }}
+
+    {{ .Inputs }}
+
+    {{ .Modules }}
+
+    {{ .Outputs }}
+
+    {{ .Providers }}
+
+    {{ .Requirements }}
+
+    {{ .Resources }}
+
+
+output:
+  file: README.md
+  mode: inject
+  template: |-
+    [//]: # (BEGIN_TF_DOCS)
+    {{ .Content }}
+
+    [//]: # (END_TF_DOCS)
+
