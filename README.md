@@ -138,7 +138,3 @@ This project is licensed under the [Unlicense](UNLICENSE.md).
 <https://www.terraform.io/docs/language/state/sensitive-data.html>
 
 <https://blog.gruntwork.io/a-comprehensive-guide-to-managing-secrets-in-your-terraform-code-1d586955ace1>
-
-## Acknowledgments
-
-<https://github.com/kube-champ/terraform-k8s-flux-bootstrap>
