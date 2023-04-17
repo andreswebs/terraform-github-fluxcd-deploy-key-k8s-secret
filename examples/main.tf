@@ -8,11 +8,10 @@ provider "kubernetes" {
   config_context = "my-context"
 }
 
-module "fluxcd" {
-  source                  = "github.com/andreswebs/terraform-github-fluxcd-bootstrap"
-  git_repository_name     = "k8s-fleet"
-  git_branch              = "main"
-  git_target_path         = "clusters/your-cluster"
-  github_owner            = "your-github-name"
-  github_deploy_key_title = "flux-your-cluster"
+module "fluxcd_deploy_key" {
+  source              = "github.com/andreswebs/terraform-github-fluxcd-deploy-key-k8s-secret"
+  k8s_namespace       = "flux-system"
+  git_repository_name = var.flux_repository_name
+  git_branch          = var.flux_git_branch
+  github_owner        = var.flux_github_owner
 }

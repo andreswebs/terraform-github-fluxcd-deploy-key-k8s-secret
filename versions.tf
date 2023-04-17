@@ -14,24 +14,14 @@ terraform {
       version = "~> 4.0"
     }
 
+    http = {
+      source  = "hashicorp/http"
+      version = "~> 3.2"
+    }
+
     kubernetes = {
       source  = "hashicorp/kubernetes"
       version = "~> 2.16"
-    }
-
-    kubectl = {
-      source  = "gavinbunney/kubectl"
-      version = "~> 1.14"
-    }
-
-    flux = {
-      source  = "fluxcd/flux"
-      version = "1.0.0-rc.1"
-    }
-
-    local = {
-      source  = "hashicorp/local"
-      version = "~> 2.2"
     }
 
     null = {

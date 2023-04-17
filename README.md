@@ -33,13 +33,12 @@ provider "kubernetes" {
   config_context = "my-context"
 }
 
-module "fluxcd" {
-  source                  = "github.com/andreswebs/terraform-github-fluxcd-bootstrap"
-  git_repository_name     = "k8s-fleet"
-  git_branch              = "main"
-  git_target_path         = "clusters/your-cluster"
-  github_owner            = "your-github-name"
-  github_deploy_key_title = "flux-your-cluster"
+module "fluxcd_deploy_key" {
+  source              = "github.com/andreswebs/terraform-github-fluxcd-deploy-key-k8s-secret"
+  k8s_namespace       = "flux-system"
+  git_repository_name = var.flux_repository_name
+  git_branch          = var.flux_git_branch
+  github_owner        = var.flux_github_owner
 }
 ```
 
@@ -95,7 +94,7 @@ No modules.
 | Name | Version |
 |------|---------|
 | <a name="provider_github"></a> [github](#provider\_github) | ~> 5.0 |
-| <a name="provider_http"></a> [http](#provider\_http) | n/a |
+| <a name="provider_http"></a> [http](#provider\_http) | ~> 3.2 |
 | <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | ~> 2.16 |
 | <a name="provider_null"></a> [null](#provider\_null) | ~> 3.2 |
 | <a name="provider_tls"></a> [tls](#provider\_tls) | ~> 4.0 |
@@ -105,11 +104,9 @@ No modules.
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.3 |
-| <a name="requirement_flux"></a> [flux](#requirement\_flux) | 1.0.0-rc.1 |
 | <a name="requirement_github"></a> [github](#requirement\_github) | ~> 5.0 |
-| <a name="requirement_kubectl"></a> [kubectl](#requirement\_kubectl) | ~> 1.14 |
+| <a name="requirement_http"></a> [http](#requirement\_http) | ~> 3.2 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | ~> 2.16 |
-| <a name="requirement_local"></a> [local](#requirement\_local) | ~> 2.2 |
 | <a name="requirement_null"></a> [null](#requirement\_null) | ~> 3.2 |
 | <a name="requirement_tls"></a> [tls](#requirement\_tls) | ~> 4.0 |
 
