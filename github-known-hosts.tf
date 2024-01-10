@@ -1,10 +1,7 @@
-
 locals {
-
   github_domain        = "github.com"
   github_meta_endpoint = "https://api.${local.github_domain}/meta"
   github_api_version   = "2022-11-28"
-
 }
 
 data "http" "github_meta" {
